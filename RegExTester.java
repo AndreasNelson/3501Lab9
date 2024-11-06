@@ -33,6 +33,43 @@ public class RegExTester {
 		doRegExMatch("cAkE", Pattern.CASE_INSENSITIVE, "This cake is so delicious and moist.");
 		doRegExSplit("us ", "Thank you, for helping us help you help us all.");
 		doRegExReplace("\\d+", 0, "8000", "24 ounces of dark chocolate, 2 cups of sugar, 12 grams of ethyl benzene...");
+
+		 // Test data
+		 String text1 = "DFA and NFA are important in computer science. A DFA is deterministic, while an NFA is non-deterministic.";
+		 String text2 = "There are 123 students in the class, -45 are absent, and 67 are present.";
+		 String text3 = "The temperature today is -5 degrees, down from 20 degrees yesterday. Room -123 is cold.";
+		 String text4 = "This test checks words that start with t like test, triangle, and cat.";
+		 String text5 = "Finding words with t and/or i: time, input, cat, dog, night";
+		 String text6 = "item1|item2|item3|test item|final item";
+		 String text7 = "Today is sunny, and today we will study. Come back today!";
+ 
+		 // 1. Find "dfa" and "nfa"
+		 System.out.println("Task 1: Finding DFA and NFA");
+		 doRegExMatch("dfa|nfa", Pattern.CASE_INSENSITIVE, text1);
+ 
+		 // 2. Find all integer numbers (positive only)
+		 System.out.println("Task 2: Finding positive integers");
+		 doRegExMatch("\\d+", 0, text2);
+ 
+		 // 3. Find negative integer numbers
+		 System.out.println("Task 3: Finding negative integers");
+		 doRegExMatch("-\\d+", 0, text3);
+ 
+		 // 4. Find words starting with 't'
+		 System.out.println("Task 4: Finding words starting with 't'");
+		 doRegExMatch("\\bt\\w+", Pattern.CASE_INSENSITIVE, text4);
+ 
+		 // 5. Find words containing 't' and/or 'i'
+		 System.out.println("Task 5: Finding words with 't' and/or 'i'");
+		 doRegExMatch("\\b\\w*[ti]\\w*\\b", Pattern.CASE_INSENSITIVE, text5);
+ 
+		 // 6. Split string by '|'
+		 System.out.println("Task 6: Splitting by |");
+		 doRegExSplit("\\|", text6);
+ 
+		 // 7. Replace "today" with "yesterday"
+		 System.out.println("Task 7: Replacing 'today' with 'yesterday'");
+		 doRegExReplace("today", Pattern.CASE_INSENSITIVE, "yesterday", text7);
 	}
 
 	/**
